@@ -29,6 +29,7 @@ bool check() {
 double f(int i) {
     if (i < -1) return 0;
     if (i == -1) return 1;
+    if (i == 0) return a[i][i];
     double det = a[i][i] * f( i - 1) - a[i + 1][i] * a[i][i + 1] * f( i - 2);
     return det;
 }
@@ -45,7 +46,7 @@ double matrix_norm(double b[][n]) {
     for (int j = 0; j < n; j++) {
         sum = 0;
         for (int i = 0; i < n; i++) {
-            sum += b[i][j];
+            sum += abs(b[i][j]);
         }
         sumi[j] = sum;
     }
@@ -135,7 +136,7 @@ double inversion()
     return norm;
 }
 
-double conol() {
+double cond() {
     return inversion() * matrix_norm(a);
 }
 
@@ -227,7 +228,7 @@ int main()
     printf("\n\nВизначник: det(A) = %f \n", determinant());
     printf("\nОбернена матриця: ");
     //inversion(n);
-    cout << "\n\nЧисло обумовленості: conol(A) = " << conol() << endl;
+    cout << "\n\nЧисло обумовленості: cond(A) = " << cond() << endl;
 }
 
 
