@@ -167,9 +167,8 @@ void progonka() {
 }
 
 // Умова зупинки
-bool converge(double xk[], double xkp[])
+bool stopCheck(double xk[], double xkp[])
 {
-    double epsilon = 0.001;
     double norm = 0;
    // for (int i = 0; i < n; i++) cout << "\n " << xk[i]; //<<" "<< xkp[i];
     cout << "\n";
@@ -202,7 +201,7 @@ void zeidel() {
             x[i] = (b[i] - var) / a[i][i];
         }
         for (int i = 0; i < n; i++) cout << "\n x"<<i+1<<" = " << x[i];
-    } while (converge(x, xp)!=0);
+    } while (stopCheck(x, xp)!=0);
     
     cout << "Відповідь: ";
     for (int i = 0; i < n; i++) {
